@@ -40,7 +40,7 @@ async function getInscriptions() {
 
 // Load inscriptions info
 window.onload = async () => {
-    const json = await getInscriptions();
+    const json = ""; // await getInscriptions();
     const inscriptions = Number.parseInt(json["inscriptions"]);
 
     if (!isNaN(inscriptions)) {

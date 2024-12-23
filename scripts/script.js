@@ -4,6 +4,16 @@ for (a of links) {
     a.onclick = () => bootstrap.Offcanvas.getInstance("#offcanvas").hide();
 };
 
+// Add toggle offcanvas event
+document.addEventListener("DOMContentLoaded", () => {
+    var offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvas'));
+    document.getElementById("toggleMenu").addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        offcanvas.toggle();
+    });
+});
+
 // Countdown timer
 (() => {
 const second = 1000,
@@ -12,7 +22,7 @@ const second = 1000,
     day = hour * 24;
 
 const eventDate = new Date("2025-04-17T00:00:00-03:00").getTime(),
-    x = setInterval(function() {
+    x = setInterval(() => {
 
         const now = new Date().getTime(),
             distance = eventDate - now;
@@ -28,7 +38,7 @@ const eventDate = new Date("2025-04-17T00:00:00-03:00").getTime(),
         document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
         document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
         document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
-    }, 0);
+    }, 1000);
 })();
 
 // Popover
